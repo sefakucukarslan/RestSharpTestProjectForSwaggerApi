@@ -60,12 +60,12 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
             return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
         }
 
-        public BaseUserResponse UserGetAction(string userName)
+        public CreateUserRequest UserGetAction(string userName)
         {
             client.BaseUrl = new Uri(baseUrl + userName);
             request = new RestRequest(Method.GET);
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
+            return JsonSerializer.Deserialize<CreateUserRequest>(response.Content);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
     {
         IUserActions useractions;
         BaseUserResponse baseUserResponse;
+        CreateUserRequest createUserRequest;
 
         public UserServices()
         {
@@ -58,9 +59,15 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
 
         public void GetUserService(string userName)
         {
-            baseUserResponse = useractions.UserGetAction(userName);
-            Assert.True(baseUserResponse.Code == 200);
-            Assert.Equal("unknown", baseUserResponse.Type);
+            createUserRequest = useractions.UserGetAction(userName);
+            //Assert.True(createUserRequest.Id == 9222968140497196000);
+            Assert.Contains(userName, createUserRequest.UserName);
+            Assert.Equal("Sefa", createUserRequest.FirstName);
+            Assert.Equal("Küçükarslan", createUserRequest.LastName);
+            Assert.Equal("sefa@gmail.com", createUserRequest.Email);
+            Assert.Equal("12345", createUserRequest.Password);
+            Assert.Equal("5555-55-555", createUserRequest.Phone);
+            Assert.Equal(1, createUserRequest.UserStatus);
 
         }
     }

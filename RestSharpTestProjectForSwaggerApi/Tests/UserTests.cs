@@ -14,19 +14,18 @@ namespace RestSharpTestProjectForSwaggerApi.Tests
             userService = new UserServices();
         }
 
-        [Theory(DisplayName ="Get User")]
-        [InlineData("sakarya54")]
-        public void GetUserTest(string userName)
-        {
-            userService.GetUserService(userName);
-        }
-
-
         [Theory(DisplayName = "User Login")]
         [InlineData("AdminSefa", "12345")]
         public void UserLoginTest(string userName, string password)
         {
             userService.UserLoginService(userName, password);
+        }
+
+        [Theory(DisplayName = "Get User")]
+        [InlineData("AdminSefa")]
+        public void GetUserTest(string userName)
+        {
+            userService.GetUserService(userName);
         }
 
         [Fact(DisplayName = "User Logout")]
@@ -60,7 +59,7 @@ namespace RestSharpTestProjectForSwaggerApi.Tests
             userService.UpdateUserService(changingUserUserName,
                  new CreateUserRequest
                  {
-                     Id = 9222968140497192000,
+                     Id = 9222968140497196000,
                      FirstName = "SefaUpdate",
                      LastName = "KüçükarslanUpdate",
                      UserName = "AdminSefa",

@@ -10,7 +10,7 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Abstract
         BaseUserResponse CreateUserAction(CreateUserRequest createUserRequest);
         BaseUserResponse UserUpdateAction(string userName, CreateUserRequest createUserRequest);
         BaseUserResponse UserDeleteAction(string userName);
-        BaseUserResponse UserGetAction(string userName);
+        CreateUserRequest UserGetAction(string userName);
 
     }
 }
