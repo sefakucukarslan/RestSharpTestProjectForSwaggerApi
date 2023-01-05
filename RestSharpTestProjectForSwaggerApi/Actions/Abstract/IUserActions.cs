@@ -1,4 +1,4 @@
-﻿using RestSharpTestProjectForSwaggerApi.Models.Requests;
+﻿using RestSharpTestProjectForSwaggerApi.Models.Requests.user;
 using RestSharpTestProjectForSwaggerApi.Models.Responses.UserResponses;
 
 namespace RestSharpTestProjectForSwaggerApi.Actions.Abstract

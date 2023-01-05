@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace RestSharpTestProjectForSwaggerApi.Models.Requests
+namespace RestSharpTestProjectForSwaggerApi.Models.Requests.user
 {
-    internal class CreateUserRequest
+    public class CreateUserRequest
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

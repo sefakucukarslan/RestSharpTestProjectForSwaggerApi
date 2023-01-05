@@ -1,6 +1,6 @@
 ﻿using RestSharpTestProjectForSwaggerApi.Actions.Abstract;
 using RestSharpTestProjectForSwaggerApi.Actions.Concrete;
-using RestSharpTestProjectForSwaggerApi.Models.Requests;
+using RestSharpTestProjectForSwaggerApi.Models.Requests.user;
 using RestSharpTestProjectForSwaggerApi.Models.Responses.UserResponses;
 using RestSharpTestProjectForSwaggerApi.Services.Abstract;
 using Xunit;
@@ -68,7 +68,6 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
             Assert.Equal("12345", createUserRequest.Password);
             Assert.Equal("5555-55-555", createUserRequest.Phone);
             Assert.Equal(1, createUserRequest.UserStatus);
-
         }
     }
 }

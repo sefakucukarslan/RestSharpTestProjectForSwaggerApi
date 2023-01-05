@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 using RestSharpTestProjectForSwaggerApi.Actions.Abstract;
-using RestSharpTestProjectForSwaggerApi.Models.Requests;
+using RestSharpTestProjectForSwaggerApi.Models.Requests.user;
 using RestSharpTestProjectForSwaggerApi.Models.Responses.UserResponses;
 using System.Text.Json;
 

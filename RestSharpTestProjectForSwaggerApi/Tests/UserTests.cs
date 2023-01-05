@@ -1,4 +1,4 @@
-﻿using RestSharpTestProjectForSwaggerApi.Models.Requests;
+﻿using RestSharpTestProjectForSwaggerApi.Models.Requests.user;
 using RestSharpTestProjectForSwaggerApi.Services.Abstract;
 using RestSharpTestProjectForSwaggerApi.Services.Concrete;
 using Xunit;
