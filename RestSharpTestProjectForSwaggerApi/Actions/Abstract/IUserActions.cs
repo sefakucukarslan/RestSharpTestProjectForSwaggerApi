@@ -5,12 +5,12 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Abstract
 {
     internal interface IUserActions
     {
-        BaseUserResponse UserLoginAction(string userName, string password);
-        BaseUserResponse UserLogoutAction();
-        BaseUserResponse CreateUserAction(CreateUserRequest createUserRequest);
-        BaseUserResponse UserUpdateAction(string userName, CreateUserRequest createUserRequest);
-        BaseUserResponse UserDeleteAction(string userName);
-        CreateUserRequest UserGetAction(string userName);
+        UserResponse UserLoginAction(string userName, string password);
+        UserResponse UserLogoutAction();
+        UserResponse CreateUserAction(CreateUserRequest createUserRequest);
+        UserResponse UserUpdateAction(string userName, CreateUserRequest createUserRequest);
+        UserResponse UserDeleteAction(string userName);
+        GetUserResponse UserGetAction(string userName);
 
     }
 }

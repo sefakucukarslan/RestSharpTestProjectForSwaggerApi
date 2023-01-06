@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
 {
-    internal class UserActions : IUserActions
+    public class UserActions : IUserActions
     {
         RestClient client;
         RestRequest request;
@@ -18,54 +18,54 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
             client = new RestClient();
         }
 
-        public BaseUserResponse UserLoginAction(string userName, string password)
+        public UserResponse UserLoginAction(string userName, string password)
         {
             client.BaseUrl = new Uri(baseUrl + "login?username=" + userName + "&password=" + password);
             request= new RestRequest(Method.GET);
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
+            return JsonSerializer.Deserialize<UserResponse>(response.Content);
         }
 
-        public BaseUserResponse UserLogoutAction()
+        public UserResponse UserLogoutAction()
         {
             client.BaseUrl = new Uri(baseUrl + "logout");
             request = new RestRequest(Method.GET);
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
+            return JsonSerializer.Deserialize<UserResponse>(response.Content);
         }
 
-        public BaseUserResponse CreateUserAction(CreateUserRequest createUserRequest)
+        public UserResponse CreateUserAction(CreateUserRequest createUserRequest)
         {
             client.BaseUrl = new Uri(baseUrl);
             request = new RestRequest(Method.POST);
             request.AddJsonBody(JsonSerializer.Serialize(createUserRequest));
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
+            return JsonSerializer.Deserialize<UserResponse>(response.Content);
         }
 
-        public BaseUserResponse UserUpdateAction(string userName, CreateUserRequest createUserRequest)
+        public UserResponse UserUpdateAction(string userName, CreateUserRequest createUserRequest)
         {
             client.BaseUrl = new Uri(baseUrl + userName);
             request = new RestRequest(Method.PUT);
             request.AddJsonBody(JsonSerializer.Serialize(createUserRequest));
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
+            return JsonSerializer.Deserialize<UserResponse>(response.Content);
         }
 
-        public BaseUserResponse UserDeleteAction(string userName)
+        public UserResponse UserDeleteAction(string userName)
         {
             client.BaseUrl = new Uri(baseUrl + userName);
             request = new RestRequest(Method.DELETE);
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<BaseUserResponse>(response.Content);
+            return JsonSerializer.Deserialize<UserResponse>(response.Content);
         }
 
-        public CreateUserRequest UserGetAction(string userName)
+        public GetUserResponse UserGetAction(string userName)
         {
             client.BaseUrl = new Uri(baseUrl + userName);
             request = new RestRequest(Method.GET);
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<CreateUserRequest>(response.Content);
+            return JsonSerializer.Deserialize<GetUserResponse>(response.Content);
         }
     }
 }

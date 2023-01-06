@@ -7,67 +7,67 @@ using Xunit;
 
 namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
 {
-    internal class UserServices : IUserServices
+    public class UserServices : IUserServices
     {
-        IUserActions useractions;
-        BaseUserResponse baseUserResponse;
-        CreateUserRequest createUserRequest;
+        IUserActions userActions;
+        UserResponse userResponse;
+        GetUserResponse getUserResponse;
 
         public UserServices()
         {
-            useractions = new UserActions();
+            userActions = new UserActions();
         }
         public void UserLoginService(string userName, string password)
         {
-            baseUserResponse = useractions.UserLoginAction(userName, password);
-            Assert.True(baseUserResponse.Code == 200);
-            Assert.Contains("logged in user session:", baseUserResponse.Message);
-            Assert.Equal("unknown", baseUserResponse.Type);
+            userResponse = userActions.UserLoginAction(userName, password);
+            Assert.True(userResponse.Code == 200);
+            Assert.Contains("logged in user session:", userResponse.Message);
+            Assert.Equal("unknown", userResponse.Type);
         }
 
         public void UserLogoutService()
         {
-            baseUserResponse = useractions.UserLogoutAction();
-            Assert.True(baseUserResponse.Code == 200);
-            Assert.Equal("unknown", baseUserResponse.Type);
-            Assert.Contains("ok", baseUserResponse.Message);
+            userResponse = userActions.UserLogoutAction();
+            Assert.True(userResponse.Code == 200);
+            Assert.Equal("unknown", userResponse.Type);
+            Assert.Contains("ok", userResponse.Message);
         }
 
         public void CreateUserService(CreateUserRequest createUserRequest)
         {
-            baseUserResponse = useractions.CreateUserAction(createUserRequest);
-            Assert.True(baseUserResponse.Code == 200);
-            Assert.Equal("unknown", baseUserResponse.Type);
-            Assert.Contains(createUserRequest.Id.ToString(), baseUserResponse.Message);
+            userResponse = userActions.CreateUserAction(createUserRequest);
+            Assert.True(userResponse.Code == 200);
+            Assert.Equal("unknown", userResponse.Type);
+            Assert.Contains(createUserRequest.Id.ToString(), userResponse.Message);
         }
 
         public void UpdateUserService(string userName, CreateUserRequest createUserRequest)
         {
-            baseUserResponse = useractions.UserUpdateAction(userName, createUserRequest);
-            Assert.True(baseUserResponse.Code == 200);
-            Assert.Equal("unknown", baseUserResponse.Type);
-            Assert.Contains(createUserRequest.Id.ToString(), baseUserResponse.Message);
+            userResponse = userActions.UserUpdateAction(userName, createUserRequest);
+            Assert.True(userResponse.Code == 200);
+            Assert.Equal("unknown", userResponse.Type);
+            Assert.Contains(createUserRequest.Id.ToString(), userResponse.Message);
         }
 
         public void DeleteUserService(string userName)
         {
-            baseUserResponse = useractions.UserDeleteAction(userName);
-            Assert.True(baseUserResponse.Code == 200);
-            Assert.Equal("unknown", baseUserResponse.Type);
-            Assert.Contains(userName, baseUserResponse.Message);
+            userResponse = userActions.UserDeleteAction(userName);
+            Assert.True(userResponse.Code == 200);
+            Assert.Equal("unknown", userResponse.Type);
+            Assert.Contains(userName, userResponse.Message);
         }
 
         public void GetUserService(string userName)
         {
-            createUserRequest = useractions.UserGetAction(userName);
+            getUserResponse = userActions.UserGetAction(userName);
             //Assert.True(createUserRequest.Id == 9222968140497196000);
-            Assert.Contains(userName, createUserRequest.UserName);
-            Assert.Equal("Sefa", createUserRequest.FirstName);
-            Assert.Equal("Küçükarslan", createUserRequest.LastName);
-            Assert.Equal("sefa@gmail.com", createUserRequest.Email);
-            Assert.Equal("12345", createUserRequest.Password);
-            Assert.Equal("5555-55-555", createUserRequest.Phone);
-            Assert.Equal(1, createUserRequest.UserStatus);
+            Assert.Contains(userName, getUserResponse.UserName);
+            Assert.Equal("Sefa", getUserResponse.FirstName);
+            Assert.Equal("Küçükarslan", getUserResponse.LastName);
+            Assert.Equal("sefa@gmail.com", getUserResponse.Email);
+            Assert.Equal("12345", getUserResponse.Password);
+            Assert.Equal("5555-55-555", getUserResponse.Phone);
+            Assert.Equal(1, getUserResponse.UserStatus);
         }
     }
 }
