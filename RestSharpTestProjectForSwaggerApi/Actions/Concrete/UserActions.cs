@@ -21,7 +21,7 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
         public UserResponse UserLoginAction(string userName, string password)
         {
             client.BaseUrl = new Uri(baseUrl + "login?username=" + userName + "&password=" + password);
-            request= new RestRequest(Method.GET);
+            request = new RestRequest(Method.GET);
             response = client.Execute(request);
             return JsonSerializer.Deserialize<UserResponse>(response.Content);
         }
@@ -64,6 +64,7 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
         {
             client.BaseUrl = new Uri(baseUrl + userName);
             request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
             response = client.Execute(request);
             return JsonSerializer.Deserialize<GetUserResponse>(response.Content);
         }
