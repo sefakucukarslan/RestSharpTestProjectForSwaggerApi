@@ -10,5 +10,6 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Abstract
     public interface IPetServices
     {
         void CreatePetService(CreatePetRequest createPetRequest);
+        void GetPetService(long id);
     }
 }

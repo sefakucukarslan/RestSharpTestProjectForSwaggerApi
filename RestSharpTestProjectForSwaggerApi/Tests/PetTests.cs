@@ -1,4 +1,5 @@
-﻿using RestSharpTestProjectForSwaggerApi.Services.Abstract;
+﻿using RestSharpTestProjectForSwaggerApi.Models.Requests.pet;
+using RestSharpTestProjectForSwaggerApi.Services.Abstract;
 using RestSharpTestProjectForSwaggerApi.Services.Concrete;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,15 @@ namespace RestSharpTestProjectForSwaggerApi.Tests
 
         public void CreatePetTests()
         {
-            CreatePetService
+            petServices.CreatePetService(new CreatePetRequest
+            {
+                
+            });
+        }
+
+        public void GetPetTests(long id)
+        {
+
         }
     }
 }
