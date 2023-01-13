@@ -2,6 +2,7 @@
 using RestSharpTestProjectForSwaggerApi.Actions.Concrete;
 using RestSharpTestProjectForSwaggerApi.Models.Requests.pet;
 using RestSharpTestProjectForSwaggerApi.Models.Responses.pet;
+using RestSharpTestProjectForSwaggerApi.Models.Responses.UserResponses;
 using RestSharpTestProjectForSwaggerApi.Services.Abstract;
 using Xunit;
 
@@ -11,6 +12,7 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
     {
         IPetActions actions;
         BasePetResponse basePetResponse;
+        DeletePetResponse deletePetResponse;
 
         public PetServices()
         {
@@ -27,6 +29,14 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
             Assert.Equal(createPetRequest.Status, basePetResponse.Status);
         }
 
+        public void DeletePetService(long id)
+        {
+            deletePetResponse = actions.DeletePetAction(id);
+            Assert.True(deletePetResponse.Code == 200);
+            Assert.Contains("1", deletePetResponse.Message);
+            Assert.Equal("unknown", deletePetResponse.Type);
+        }
+
         public void GetPetService(long id)
         {
             basePetResponse = actions.GetPetAction(id);
@@ -34,7 +44,7 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Concrete
             Assert.Equal(1, basePetResponse.Category.Id);
             Assert.Equal("Fefo", basePetResponse.Category.Name);
             Assert.Equal("Fifo", basePetResponse.Name);
-            //Assert.Equal(1,basePetResponse.PhotoUrls.Count);
+            Assert.True(basePetResponse.PhotoUrls.Any());
             Assert.Equal("Available",basePetResponse.Status);
 
         }

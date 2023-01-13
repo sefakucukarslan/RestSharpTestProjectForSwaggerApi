@@ -46,5 +46,13 @@ namespace RestSharpTestProjectForSwaggerApi.Tests
         {
             petServices.GetPetService(id);
         }
+        
+        [Theory(DisplayName ="Delete PetId")]
+        [InlineData(1)]
+        public void DeletePetTests(long id)
+        {
+            petServices.GetPetService(id);
+        }
+
     }
 }

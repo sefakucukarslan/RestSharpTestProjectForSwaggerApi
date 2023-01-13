@@ -7,5 +7,6 @@ namespace RestSharpTestProjectForSwaggerApi.Services.Abstract
         void CreatePetService(CreatePetRequest createPetRequest);
         void UpdatePetService(CreatePetRequest createPetRequest);
         void GetPetService(long id);
+        void DeletePetService(long id);
     }
 }

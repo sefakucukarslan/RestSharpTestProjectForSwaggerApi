@@ -43,5 +43,13 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
             response = client.Execute(request);
             return JsonSerializer.Deserialize<BasePetResponse>(response.Content);
         }
+
+        public DeletePetResponse DeletePetAction(long id)
+        {
+            client.BaseUrl = new Uri(baseUrl + id);
+            request = new RestRequest(Method.DELETE);
+            response = client.Execute(request);
+            return JsonSerializer.Deserialize<DeletePetResponse>(response.Content);
+        }
     }
 }
