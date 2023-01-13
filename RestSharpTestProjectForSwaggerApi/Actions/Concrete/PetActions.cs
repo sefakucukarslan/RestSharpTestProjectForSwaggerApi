@@ -1,5 +1,6 @@
 ﻿using RestSharp;
 using RestSharpTestProjectForSwaggerApi.Actions.Abstract;
+using RestSharpTestProjectForSwaggerApi.Models.Requests.pet;
 using RestSharpTestProjectForSwaggerApi.Models.Responses.pet;
 using System.Text.Json;
 
@@ -17,12 +18,30 @@ namespace RestSharpTestProjectForSwaggerApi.Actions.Concrete
             client = new RestClient();
         }
 
-        public GetPetResponse GetPetAction(long id)
+        public BasePetResponse GetPetAction(long id)
         {
             client.BaseUrl = new Uri(baseUrl + id);
             request = new RestRequest(Method.GET);
             response = client.Execute(request);
-            return JsonSerializer.Deserialize<GetPetResponse>(response.Content);
+            return JsonSerializer.Deserialize<BasePetResponse>(response.Content);
+        }
+
+        public BasePetResponse CreatePetAction(CreatePetRequest createPetRequest)
+        {
+            client.BaseUrl = new Uri(baseUrl);
+            request = new RestRequest(Method.POST);
+            request.AddJsonBody(JsonSerializer.Serialize(createPetRequest));
+            response = client.Execute(request);
+            return JsonSerializer.Deserialize<BasePetResponse>(response.Content);
+        }
+
+        public BasePetResponse UpdatePetAction(CreatePetRequest createPetRequest)
+        {
+            client.BaseUrl = new Uri(baseUrl);
+            request = new RestRequest(Method.PUT);
+            request.AddJsonBody(JsonSerializer.Serialize(createPetRequest));
+            response = client.Execute(request);
+            return JsonSerializer.Deserialize<BasePetResponse>(response.Content);
         }
     }
 }

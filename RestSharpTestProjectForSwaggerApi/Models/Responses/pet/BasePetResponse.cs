@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestSharpTestProjectForSwaggerApi.Models.Requests.pet
+namespace RestSharpTestProjectForSwaggerApi.Models.Responses.pet
 {
-    public class CreatePetRequest
+    public class BasePetResponse
     {
-
         public long Id { get; set; }
         public Category Category { get; set; }
         public string Name { get; set; }

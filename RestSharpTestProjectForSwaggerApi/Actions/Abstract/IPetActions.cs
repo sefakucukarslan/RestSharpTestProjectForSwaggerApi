@@ -1,14 +1,12 @@
-﻿using RestSharpTestProjectForSwaggerApi.Models.Responses.pet;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RestSharpTestProjectForSwaggerApi.Models.Requests.pet;
+using RestSharpTestProjectForSwaggerApi.Models.Responses.pet;
 
 namespace RestSharpTestProjectForSwaggerApi.Actions.Abstract
 {
     public interface IPetActions
     {
-        GetPetResponse GetPetAction(long id);
+        BasePetResponse GetPetAction(long id);
+        BasePetResponse CreatePetAction(CreatePetRequest createPetRequest);
+        BasePetResponse UpdatePetAction(CreatePetRequest createPetRequest);
     }
 }
